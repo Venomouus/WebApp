@@ -6,6 +6,7 @@ namespace WebApp.Models
 {
     public class ClienteModel
     {
+       
         public int Id { get; set; }
         [Required(ErrorMessage = "Digite o Nome da empresa")]
         public string Nm_Empresa { get; set; }

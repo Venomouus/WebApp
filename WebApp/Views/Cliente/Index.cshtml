@@ -29,7 +29,7 @@
 
     <br />
 
-    <h1 class="display-4">Listagem de contatos</h1>
+    <h1 class="display-4">Lista de Clientes</h1>
 
     <table class="table">
         <thead>
@@ -43,6 +43,75 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+           
+                <th scope="row">1</th>
+                <td>Nova Transporte Ltda</td>
+                <td>07</td>
+                <td>444.333.785/0001</td>
+                <td>22</td>
+                <td>07/5/22</td>
+                    <td>
+                        <div>
+                            <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Cliente">Editar</button>
+                            <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Cliente">Apagar</button>
+                        </div>
+                    </td>
+                
+            
+            </tr>
+            <tr>
+
+                <th scope="row">2</th>
+                <td>Metropolitana Transportes e Serviços Ltda</td>
+                <td>02</td>
+                <td>555.777.159/0001</td>
+                <td>15</td>
+                <td>11/11/19</td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Cliente">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Cliente">Apagar</button>
+                    </div>
+                </td>
+
+
+            </tr>
+
+            <tr>
+
+                <th scope="row">3</th>
+                <td>Consórcio Bus+</td>
+                <td>12</td>
+                <td>333.555.789/0001</td>
+                <td>20</td>
+                <td>04/05/19</td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Cliente">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Cliente">Apagar</button>
+                    </div>
+                </td>
+
+
+            </tr>
+            <tr>
+
+                <th scope="row">4</th>
+                <td>Consórcio Internorte</td>
+                <td>08</td>
+                <td>123.987.354/0001</td>
+                <td>14</td>
+                <td>22/05/19</td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Cliente">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Cliente">Apagar</button>
+                    </div>
+                </td>
+
+
+            </tr>
             @if (Model != null && Model.Any())
             {
                 foreach (ClienteModel cliente in Model)
