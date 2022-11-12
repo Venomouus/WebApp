@@ -6,12 +6,12 @@ using WebApp.Repositorio;
 
 namespace WebApp.Controllers
 {
-    public class ClienteController : Controller
+    public class OnibusController : Controller
     {
-        private readonly IClienteRepositorio _clienteRepositorio;
-        public ClienteController(IClienteRepositorio clienteRepositorio)
+        private readonly IOnibusRepositorio _onibusRepositorio;
+        public OnibusController(IOnibusRepositorio onibusRepositorio)
         {
-            _clienteRepositorio = clienteRepositorio;
+            _onibusRepositorio = onibusRepositorio;
         }
         public IActionResult Index()
         {
@@ -24,14 +24,14 @@ namespace WebApp.Controllers
         }
         public IActionResult Editar(int id)
         {
-            ClienteModel cliente = _clienteRepositorio.BuscarPorId(id);
-            return View(cliente);
+            OnibusModel onibus = _onibusRepositorio.BuscarPorId(id);
+            return View(onibus);
         }
 
         public IActionResult ApagarConfirmacao(int id)
         {
-            ClienteModel cliente = _clienteRepositorio.BuscarPorId(id);
-            return View(cliente);
+            OnibusModel onibus = _onibusRepositorio.BuscarPorId(id);
+            return View(onibus);
         }
 
         public IActionResult Apagar(int id)
@@ -39,61 +39,61 @@ namespace WebApp.Controllers
             try
             {
 
-                bool apagado = _clienteRepositorio.Apagar(id);
+                bool apagado = _onibusRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = "Cliente apagado com sucesso";
+                    TempData["MensagemSucesso"] = "Onibus apagado com sucesso";
                 }
                 else
                 {
-                    TempData["MensagemErro"] = "Falha ao Apagar Cliente";
+                    TempData["MensagemErro"] = "Falha ao Apagar Onibus";
                 }
                 return RedirectToAction("Index");
 
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Falha ao Apagar Cliente erro:{erro}";
+                TempData["MensagemErro"] = $"Falha ao Apagar Onibus erro:{erro}";
                 return RedirectToAction("Index");
 
             }
         }
 
         [HttpPost]
-        public IActionResult Criar(ClienteModel cliente)
+        public IActionResult Criar(OnibusModel onibus)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
 
-                    cliente = _clienteRepositorio.Adicionar(cliente);
+                    onibus = _onibusRepositorio.Adicionar(onibus);
 
-                    TempData["MensagemSucesso"] = "Cliente Cadastrado com sucesso";
+                    TempData["MensagemSucesso"] = "Onibus Cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
-                return View(cliente);
+                return View(onibus);
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao Cadastrar Cliente: {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao Cadastrar Onibus: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
         [HttpPost]
-        public IActionResult Editar(ClienteModel cliente)
+        public IActionResult Editar(OnibusModel onibus)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    cliente = _clienteRepositorio.Atualizar(cliente);
+                    onibus = _onibusRepositorio.Atualizar(onibus);
 
                     TempData["MensagemSucesso"] = "Cliente Alterado com sucesso";
                     return RedirectToAction("Index");
 
                 }
-                return View("Editar", cliente);
+                return View("Editar", onibus);
             }
             catch (System.Exception erro)
             {
@@ -103,3 +103,4 @@ namespace WebApp.Controllers
         }
     }
 }
+

@@ -36,6 +36,7 @@ namespace WebApp
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+            services.AddScoped<IOnibusRepositorio, OnibusRepositorio>();
 
             services.AddSession(o =>
             {

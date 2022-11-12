@@ -31,14 +31,15 @@
 
     <h1 class="display-4">Lista de Clientes</h1>
 
-    <table class="table">
+    <table id="table-clientes " class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Id</th>
                 <th scope="col">Nm_Empresa</th>
                 <th scope="col">Cd_Empresa </th>
                 <th scope="col">CNPJ </th>
                 <th scope="col">Nr_Total_Onibus </th>
+                <th scope="col">Capacidade </th>
                 <th scope="col">Data_Cadastro</th>
             </tr>
         </thead>
@@ -50,11 +51,12 @@
                 <td>07</td>
                 <td>444.333.785/0001</td>
                 <td>22</td>
+                <td>80</td>
                 <td>07/5/22</td>
                     <td>
                         <div>
-                            <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Cliente">Editar</button>
-                            <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Cliente">Apagar</button>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Cliente">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Cliente">Apagar</button>
                         </div>
                     </td>
                 
@@ -67,6 +69,7 @@
                 <td>02</td>
                 <td>555.777.159/0001</td>
                 <td>15</td>
+                <td>120</td>
                 <td>11/11/19</td>
                 <td>
                     <div>
@@ -85,6 +88,7 @@
                 <td>12</td>
                 <td>333.555.789/0001</td>
                 <td>20</td>
+                <td>90</td>
                 <td>04/05/19</td>
                 <td>
                     <div>
@@ -102,6 +106,7 @@
                 <td>08</td>
                 <td>123.987.354/0001</td>
                 <td>14</td>
+                <td>120</td>
                 <td>22/05/19</td>
                 <td>
                     <div>
@@ -114,19 +119,20 @@
             </tr>
             @if (Model != null && Model.Any())
             {
-                foreach (ClienteModel cliente in Model)
+                foreach (var cliente in Model)
                 {
                     <tr>
                         <th scope="row">@cliente.Id</th>
-                        <th scope="row">@cliente.Nm_Empresa</th>
+                        <th>@cliente.Nm_Empresa</th>
                         <td>@cliente.Cd_Empresa</td>
                         <td>@cliente.Ds_Cnpj</td>
                         <td>@cliente.Nr_Total_Onibus</td>
+                        <td>@cliente.Capacidade</td>
                         <td>@cliente.Data_Cadastro</td>
                         <td>
                             <div class="btn-group" role="group">
                                 <a role="button" class="btn btn-primary" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar">Editar</a>
-                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Apagar">Apagar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ApagarConfirmacao">Apagar</a>
 
                             </div>
                         </td>

@@ -1,0 +1,145 @@
+﻿@model List<OnibusModel>
+@{
+    ViewData["Title"] = "Listagem de Onibus";
+}
+
+
+<div class="text-center">
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Onibus" asp-action="Criar">Adicionar Novo Onibus</a>
+    </div>
+    <br />
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if(TempData["MensagemErro"] != null)
+    {
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Lista de Onibus</h1>
+
+    <table id="table-onibus " class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Placa</th>
+                <th scope="col">NumRota </th>
+                <th scope="col">NomRota </th>
+                <th scope="col">NumEntradas </th>
+                <th scope="col">NumSaida</th>
+                <th scope="col">Status </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+           
+                <th scope="row">1</th>
+                <td>ABC-1585</td>
+                <td>2174</td>
+                <td>Vila Rui Barbosa</td>
+                <td>80</td>
+                <td>80</td>
+                <td>Lotado</td>
+                    <td>
+                        <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Onibus">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Onibus">Apagar</button>
+                        </div>
+                    </td>
+                
+            
+            </tr>
+            <tr>
+
+                <th scope="row">2</th>
+                <td>EFG-5D84</td>
+                <td>4758</td>
+                <td>Metro Carrao</td>
+                <td>110</td>
+                <td>101</td>
+                <td></td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Onibus">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Onibus">Apagar</button>
+                    </div>
+                </td>
+
+
+            </tr>
+
+            <tr>
+
+                <th scope="row">3</th>
+                <td>EKD-7890</td>
+                <td>1247</td>
+                <td>Parque Dom Pedro</td>
+                <td>150</td>
+                <td>137</td>
+                <td></td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Onibus">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Onibus">Apagar</button>
+                    </div>
+                </td>
+
+
+            </tr>
+            <tr>
+
+                <th scope="row">4</th>
+                <td>POO-2587</td>
+                <td>0837</td>
+                <td>Cidade Tiradentes</td>
+                <td>60</td>
+                <td>35</td>
+                <td></td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary" asp-action="Editar" asp-controller="Onibus">Editar</button>
+                        <button type="button" class="btn btn-danger" asp-action="Apagar" asp-controller="Onibus">Apagar</button>
+                    </div>
+                </td>
+
+
+            </tr>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var onibus in Model)
+                {
+                    <tr>
+                        <th scope="row">@onibus.Id</th>
+                        <th>@onibus.Placa</th>
+                        <td>@onibus.NumRota</td>
+                        <td>@onibus.NomRota</td>
+                        <td>@onibus.NumEntradas</td>
+                        <td>@onibus.NumSaida</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@onibus.Id" asp-controller="Onibus" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@onibus.Id" asp-controller="Onibus" asp-action="ApagarConfirmacao">Apagar</a>
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+
+</div>

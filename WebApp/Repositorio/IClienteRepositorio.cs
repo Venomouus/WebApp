@@ -5,7 +5,9 @@ namespace WebApp.Repositorio
 {
     public interface IClienteRepositorio
     {
-        ClienteModel ListarPorId(int id);
+        ClienteModel BuscarPorId(int id);
+        //        ClienteModel ListarPorId(int id); //
+
 
         ClienteModel Adicionar(ClienteModel cliente);
 

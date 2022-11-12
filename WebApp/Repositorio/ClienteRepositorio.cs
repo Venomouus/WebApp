@@ -12,6 +12,13 @@ namespace WebApp.Repositorio
         {
             this._context = bancoContext;
         }
+
+        public ClienteModel BuscarPorId(int id)
+        {
+            return _context.Clientes.FirstOrDefault(x => x.Id == id);
+        }
+
+
         public ClienteModel Adicionar(ClienteModel cliente)
         {
             _context.Clientes.Add(cliente);
@@ -20,9 +27,26 @@ namespace WebApp.Repositorio
             return cliente;
         }
 
+        public ClienteModel Atualizar(ClienteModel cliente)
+        {
+            ClienteModel clienteDB = BuscarPorId(cliente.Id);
+
+            if (clienteDB == null) throw new System.Exception("Houve um erro");
+
+            clienteDB.Nm_Empresa = cliente.Nm_Empresa;
+            clienteDB.Cd_Empresa = cliente.Cd_Empresa;
+            clienteDB.Ds_Cnpj = cliente.Ds_Cnpj;
+            clienteDB.Nr_Total_Onibus = cliente.Nr_Total_Onibus;
+            clienteDB.Data_Cadastro = cliente.Data_Cadastro;
+
+            _context.Clientes.Update(clienteDB);
+            _context.SaveChanges();
+
+            return clienteDB;
+        }
         public bool Apagar(int id)
         {
-            ClienteModel clienteDB = ListarPorId(id);
+            ClienteModel clienteDB = BuscarPorId(id);
 
             if (clienteDB == null) throw new System.Exception("Houve um erro");
 
@@ -32,25 +56,8 @@ namespace WebApp.Repositorio
             return true;
         }
 
-        public ClienteModel Atualizar(ClienteModel cliente)
-        {
-            ClienteModel clienteDB = ListarPorId(cliente.Id);
-
-            if (clienteDB == null) throw new System.Exception("Houve um erro");
-
-            clienteDB.Nm_Empresa = cliente.Nm_Empresa;
-            clienteDB.Cd_Empresa = cliente.Cd_Empresa;
-
-            _context.Clientes.Update(clienteDB);
-            _context.SaveChanges();
-
-            return clienteDB;
-        }
 
 
-        public ClienteModel ListarPorId(int id)
-        {
-            return _context.Clientes.FirstOrDefault(x => x.Id == id);
-        }
+
     }
 }

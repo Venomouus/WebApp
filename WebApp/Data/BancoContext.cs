@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using WebApp.Models;
 
 namespace WebApp.Data
@@ -11,5 +10,6 @@ namespace WebApp.Data
         {
         }
         public DbSet<ClienteModel> Clientes { get; set; }
+        public DbSet<OnibusModel> Onibus { get; set; }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model OnibusModel
+@{
+    ViewData["Title"] = "Criar Onibus";
+}
+<div>
+    <h1 class="display-4">Editar Onibus</h1>
+</div>
+
+<form asp-controller="Onibus" asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="Placa" class="form-label">Placa</label>
+        <input type="text" asp-for="Placa" class="form-control" placeholder="Digite a Placa" />
+        @Html.ValidationMessageFor(x => x.Placa)
+    </div>
+
+    <div class="form-group">
+        <label for="NumRota">Numero Rota</label>
+        <input type="number" asp-for="NumRota" class="form-control" placeholder="Digite o Numero da Rota" />
+        @Html.ValidationMessageFor(x => x.NumRota)
+    </div>
+
+    <div class="form-group">
+        <label for="NomRota">Nome Rota</label>
+        <input type="number" asp-for="NomRota" class="form-control" placeholder="Digite o Nome da Rota" />
+        @Html.ValidationMessageFor(x => x.NomRota)
+    </div>
+
+    <div class="form-group">
+        <label for="NumEntradas">NumeroEntradas</label>
+        <input type="number" asp-for="NumEntradas" class="form-control" placeholder="Digite o Numero de Entradas" />
+        @Html.ValidationMessageFor(x => x.NumEntradas)
+    </div>
+
+    <div class="form-group">
+        <label for="NumSaida">Numero Saida</label>
+        <input type="number" asp-for="NumSaida" class="form-control" placeholder="Digite o Numero de Saida" />
+        @Html.ValidationMessageFor(x => x.NumSaida)
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Onibus" asp-action="Index" role="button">Voltar</a>
+</form>
